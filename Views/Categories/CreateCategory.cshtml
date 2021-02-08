@@ -1,0 +1,60 @@
+﻿@model CreateCategoryDto
+
+<form>
+
+
+    <div class="row mb-2">
+        <div class="col form-group">
+            <label asp-for="ParentId"></label>
+            <select asp-for="ParentId" asp-items="ViewBag.ParentCategories" class="form-control">
+                <option></option>
+            </select>
+            <span asp-validation-for="ParentId" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col form-group">
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col form-group">
+            <label asp-for="BackgroundColor"></label>
+            <input asp-for="BackgroundColor" class="form-control" type="color" />
+            <span asp-validation-for="BackgroundColor" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col form-group">
+            <input type="submit" class="btn btn-success btn-block" />
+        </div>
+    </div>
+
+
+</form>

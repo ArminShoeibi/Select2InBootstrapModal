@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<button onclick="renderPartialViewInModal(`@Url.Action("CreateCategory","Categories",null,Context.Request.Scheme)`)" class="btn btn-primary btn-lg">Create Category</button>
+
+
+@section styles {
+    <link href="~/libs/select2/css/select2.min.css" rel="stylesheet" asp-append-version="true" />
+
+}
+@section scripts {
+
+    <script src="~/libs/select2/js/select2.full.min.js" asp-append-version="true"></script>
+
+    <script>
+        $('#bs-modal').on('shown.bs.modal', function (event) {
+            $.validator.unobtrusive.parse($('form'));
+
+            $('select').select2({
+                placeholder: "Please select an option",
+                allowClear: true,
+            });
+        })
+
+    </script>
+}

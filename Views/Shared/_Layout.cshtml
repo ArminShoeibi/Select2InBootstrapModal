@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+    @await RenderSectionAsync("styles",false)
+</head>
+<body>
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <partial name="_BootstrapModalPartialView" />
+
+
+    <script src="~/libs/jquery/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/libs/bootstrap/js/bootstrap.bundle.js" asp-append-version="true"></script>
+    <script src="~/libs/jquery-validate/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+
+    <script>
+        let jqueryValidationClasses = { validClass: "is-valid", errorClass: "is-invalid" };
+        $.validator.setDefaults(jqueryValidationClasses);
+        $.validator.unobtrusive.options = jqueryValidationClasses;
+
+        function renderPartialViewInModal(url, title) {
+            $.get(url, function (data) {
+                $("#bs-modal .modal-body").html(data);
+                $("#bs-modal #bs-modalTitle").html(title);
+                $("#bs-modal").modal('show');
+            });
+        }
+    </script>
+
+    @await RenderSectionAsync("scripts", false)
+</body>
+</html>
